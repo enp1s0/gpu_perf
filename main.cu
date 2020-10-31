@@ -6,7 +6,7 @@
 
 using compute_t = float;
 
-constexpr std::size_t N = 1lu << 15;
+constexpr std::size_t N = 1lu << 14;
 constexpr std::size_t C = 1lu << 5;
 
 int main() {
@@ -23,7 +23,7 @@ int main() {
 	for (std::size_t c = 0; c < C; c++) {
 		CUTF_CHECK_ERROR(cutf::cublas::gemm(
 					*cublas_handle.get(),
-					CUBLAS_OP_T, CUBLAS_OP_N,
+					CUBLAS_OP_N, CUBLAS_OP_N,
 					N, N, N,
 					&alpha,
 					mat_a.get(), N,
@@ -35,6 +35,7 @@ int main() {
 	CUTF_CHECK_ERROR(cudaDeviceSynchronize());
 	const auto end_clock = std::chrono::system_clock::now();
 
+	std::printf("%15s : %lu\n", "N", N);
 	const auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end_clock - start_clock).count() * 1e-3;
 	std::printf("%15s : %e [s]\n", "time", elapsed_time);
 	const auto complexity = 2 * N * N * N * C;
