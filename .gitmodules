@@ -1,3 +1,6 @@
 [submodule "cutf"]
 	path = cutf
 	url = https://github.com/enp1s0/cutf
+[submodule "gpu_monitor"]
+	path = gpu_monitor
+	url = https://github.com/enp1s0/gpu_monitor
