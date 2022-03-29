@@ -1,5 +1,5 @@
 NVCC=nvcc
-NVCCFLAGS=-std=c++14 -lcublas -I./cutf -arch=sm_60
+NVCCFLAGS=-std=c++14 -lcublas -I./cutf/include -arch=sm_80
 TARGET=gemm_perf
 
 $(TARGET):main.cu
