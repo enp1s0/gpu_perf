@@ -1,5 +1,6 @@
 NVCC=nvcc
-NVCCFLAGS=-std=c++14 -lcublas -I./cutf -arch=sm_60
+NVCCFLAGS=-std=c++14 -lcublas -I./cutf/include -I./gpu_monitor/include -arch=sm_80
+NVCCFLAGS+=-I./gpu_monitor/include -L./gpu_monitor/build -lgpu_monitor -lnvidia-ml
 TARGET=gemm_perf
 
 $(TARGET):main.cu
